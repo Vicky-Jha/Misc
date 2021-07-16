@@ -19,6 +19,18 @@ void print(int i)
 }
 void search(int k, int n)
 {
+for(int s : subset) {
+    cout << s << " ";
+}
+
+for(int i = k; i < n; ++i) {
+    subset.push_back(nums[i]);
+    search(i + 1, n);
+    subset.pop_back();
+}
+}
+void search(int k, int n)
+{
 	//cout<<"Current stack S("<<k<<")"<<"\n";
     if(k == n)
     {
