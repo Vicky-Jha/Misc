@@ -173,6 +173,40 @@ int BitwiseOperations :: flipBits(int& x)
 	return x;
 }
 
+int BitwiseOperation :: multiplyWithoutAsterisk(int a, int b) {
+	int res = 0;
+	int b = min(a, b);
+	int a = max(a, b);
+	
+	while(b != 0) {
+		if(b & 1 != 0) {
+			res += a;	
+		}
+		a = a << 1;
+		b = b >> 1;
+	}
+	return res;
+}
+
+int BitwiseOperation :: addWithoutPlus(int x, int y) {
+    while( y!= 0) {
+        int carry = x & y;
+        x =  x ^ y;
+        y = carry << 1;
+    }
+    return x;
+}
+
+// same code can be recursively done as
+
+int BitwiseOperation :: addWithoutPlus(int x, int y) {
+    if (y == 0) {
+        return x;
+    }
+
+    return addWithoutPlus(x^y, (x&y)<<1);
+}
+
 //Number : Given Number
 //Value  : A number with all bits set in given number.
 //Flipped number = Value – Number.
